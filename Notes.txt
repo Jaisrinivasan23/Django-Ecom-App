@@ -1,0 +1,6 @@
+# DataBase Connection
+pip install mysqlclient
+
+# Create a new a
+python manage.py startapp <app_name>
+
