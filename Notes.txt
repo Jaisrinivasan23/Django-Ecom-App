@@ -1,6 +1,49 @@
 # DataBase Connection
 pip install mysqlclient
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ecom_db',
+        'USER': 'root',
+        'PASSWORD': '2005',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
 
-# Create a new a
+# Create a new app
 python manage.py startapp <app_name>
+
+# to makemigrations the DataBase
+python manage.py makemigrations
+
+# to migrate
+python manage.py migrate
+
+# to Create super USER
+python manage.py createsuperuser
+
+# to register models in admin.py
+from .models import *
+admin.site.register(<model_name>)
+
+# to show names in the database in admin panel
+class <model_name>Admin(admin.ModelAdmin):
+    list_display = ['<field_name>', '<field_name>', '<field_name>']
+
+# to modify the admin panel
+pip install django-jazzmin
+modify the settings.py inclide 'jazzmin' in the installed apps
+
+# add models in the catagory page
+def collections(request):
+    Catagory = Catageory.objects.filter(status=0)
+    return render(request,'shop/collections.html',{"cat":Catagory})
+
+# add products from the database in main url.py
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

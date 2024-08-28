@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+class CatagoryAdmin(admin.ModelAdmin):
+    list_display = ('name','image','desc','created_at')
+    
+admin.site.register(Catageory,CatagoryAdmin)
+admin.site.register(Product)
